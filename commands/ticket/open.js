@@ -2,7 +2,7 @@ const { SlashCommandBuilder, PermissionFlagsBits, ChannelType } = require('disco
 
 const cooldowns = new Map();
 
-module.exports = {
+module.exports = { 
     data: new SlashCommandBuilder()
         .setName('open-ticket')
         .setDescription('Creates a new ticket channel')
@@ -36,7 +36,7 @@ module.exports = {
                 return;
             }
             const channel = await interaction.guild.channels.create({
-                name: `${channelName}`,
+                name: `${channelName}-${interaction.user.username}`,
                 type: ChannelType.GuildText,
                 permissionOverwrites: [
                     {
