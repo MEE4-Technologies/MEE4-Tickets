@@ -5,8 +5,10 @@ MEE4 Support Server. We have not yet decided to make this bot public, and will n
 ## Commands
 `/open-ticket`
 This command will create a ticket channel. Only the user who executed the command and the Support Team are permitted to view the ticket.
+<br>
 `/close-ticket`
 This command will close the ticket channel. This locks the channel for everyone except admins.
+<br>
 `/delete-ticket`
 This command will delete the ticket channel. This command can only be used by the Support Team or any Admin. This command deletes a ticket immediately, however it is recommended that you close the ticket first before you delete it.
 ## Developers
