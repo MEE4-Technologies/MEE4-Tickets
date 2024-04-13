@@ -18,10 +18,10 @@ module.exports = {
             const channel = interaction.guild.channels.cache.find(ch => ch.name === channelName && ch.name.includes('new'));
 
             if (channel) {
-                await channel.delete();
                 await interaction.editReply({
                     content: `Ticket ${channelName} has successfully been deleted.`,
                 });
+                await channel.delete();
             } else {
                 await interaction.editReply({
                     content: `Channel "${channelName}" not found!`, ephemeral: true

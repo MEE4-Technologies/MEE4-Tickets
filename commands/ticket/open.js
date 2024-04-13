@@ -4,7 +4,7 @@ const cooldowns = new Map();
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('open-ticket') 
+        .setName('open-ticket')
         .setDescription('Creates a new ticket channel')
         .addStringOption(option =>
             option.setName("name")
@@ -13,10 +13,10 @@ module.exports = {
         .setDMPermission(false),
     async execute(interaction) {
         if (cooldowns.has(interaction.user.id)) {
-            const expirationTime = cooldowns.get(interaction.user.id) + 60;
+            const expirationTime = cooldowns.get(interaction.user.id) + 600000;
             if (Date.now() < expirationTime) {
                 const timeLeft = (expirationTime - Date.now()) / 1000;
-                await interaction.reply(`Wait another ${timeLeft.toFixed(1)} seconds before using the command again.`);
+                await interaction.reply({ content: `Wait another ${timeLeft.toFixed(1)} seconds before using the command again.`, ephemeral: true});
                 return;
             }
         }
@@ -54,7 +54,7 @@ module.exports = {
                 ]
             });
             
-            await channel.send(`${interaction.user}. Your ticket has been created. \n Describe your issue and one of our staff will be with you shortly.`);
+            await channel.send(`${interaction.user}. Your ticket has been created. \n Describe your issue and one of our <@&1228395302709629120> will be with you shortly.`);
 
             await interaction.editReply({
                 content: `Ticket created! Channel with ticket: ${channelName}`,

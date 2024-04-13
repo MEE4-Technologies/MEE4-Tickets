@@ -22,13 +22,21 @@ module.exports = {
 
                 await channel.permissionOverwrites.set([
                     {
-                        id: interaction.user.id,
+                        id: everyoneRole.id,
                         deny: [PermissionFlagsBits.SendMessages]
                     },
                     {
-                        id: everyoneRole.id,
-                        deny: [PermissionFlagsBits.ViewChannel]
+                        id: interaction.guild.roles.cache.get('1228395302709629120'),
+                        allow: [PermissionFlagsBits.SendMessages]
                     },
+                    {
+                        id: everyoneRole.id,
+                        allow: [PermissionFlagsBits.ViewChannel]
+                    },
+                    {
+                        id: interaction.guild.roles.everyone,
+                        deny: [PermissionFlagsBits.ViewChannel]
+                    }
                 ]
                 );
 
